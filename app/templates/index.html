@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{name}}</title>
+    </head>
+    <a href="/logout">ログアウトする</a>
+
+    <img src="/static/images/top.png" alt="test">
+
+    <form action="/add" method="post">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="status" placeholder="status">
+        <input type="text" name="free" placeholder="free">
+        <input type="submit" value="Add">
+    </form>
+
+    <form action="/update" method="post" id="update">
+          <input type="text" name="title" placeholder="title">
+          <input type="text" name="status" placeholder="status">
+          <input type="text" name="free" placeholder="free">
+          <input type="submit" value="Update">
+    </form>
+
+
+    <form action="/delete" method="post" id="delete">
+          <input type="submit" value="Delete Selected All Task">
+    </form>
+            <h1>　内容　 登録日 　更新日　 状態　　自由欄 </h1>
+            {% for task in user_task %}
+            <div>              　
+                <input type="radio" name="update" form="update" value={{task.id}}>
+                <input type="checkbox" name="delete" form="delete" value={{task.id}}>
+                {{task.title}}{{task.register_date}}更新日：{{task.update_date}} {{task.status}} {{task.free}}
+            </div>
+            {% endfor %}
+
+    </body>
+</html>
